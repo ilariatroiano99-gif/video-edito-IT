@@ -1,0 +1,115 @@
+/* Custom CSS for Video Editor specific layout, extending the brutalist style */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #111;
+    border-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.brutal-box {
+    border: 3px solid var(--text, #21321E);
+    box-shadow: 10px 10px 0px var(--text, #21321E);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.brutal-box:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px var(--terracotta, #DA643F);
+    border-color: var(--terracotta, #DA643F);
+}
+
+.video-item video,
+.video-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+}
+
+.video-item:hover video,
+.video-item:hover img {
+    opacity: 1;
+}
+
+.video-overlay {
+    display: none !important;
+}
+
+/* Slot vuoti */
+.empty-slot {
+    background: var(--bg, #FDF8F5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-content {
+    text-align: center;
+    padding: 20px;
+    z-index: 2;
+}
+
+.empty-content b {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text, #21321E);
+    opacity: 0.5;
+}
+
+@media (max-width: 1024px) {
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .video-item {
+        border-radius: 16px;
+        box-shadow: 4px 4px 0px var(--text, #21321E);
+    }
+    
+    .brutal-box:hover {
+        transform: none;
+        box-shadow: 4px 4px 0px var(--text, #21321E);
+        border-color: var(--text, #21321E);
+    }
+}
+
+@media (max-width: 480px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .video-item {
+        border-radius: 12px;
+        box-shadow: 3px 3px 0px var(--text, #21321E);
+    }
+    
+    .brutal-box:hover {
+        box-shadow: 3px 3px 0px var(--text, #21321E);
+    }
+}
